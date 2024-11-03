@@ -27,18 +27,14 @@ def custom_404_view(request, exception):
 
 def lista_produtos(request):
     produtos = Produto.objects
-    print(f' ESte é o requeste {request} e tipo {type(request)}')
-    nome_produto = request.POST.get('nome', '')
-    if nome_produto:
-        produtos = produtos.filter(nome='nome_produto').values()
-        nome_produto = ""
 
+    nome_produto = request.POST.get('nome', '')
     setor_armazenamento = request.POST.get('setor', '')
+    if nome_produto:
+        produtos = produtos.filter(nome=nome_produto)
+
     if setor_armazenamento:
-        print('algo')
-        setor_armazenamento = ""
-        produtos = produtos.filter(setor_armazenamento='setor_armazenamento').values()
-        print(setor_armazenamento)
+        produtos = produtos.filter(setor_armazenamento=setor_armazenamento)
 
     produtos = produtos.order_by('vencimento')
 
@@ -49,5 +45,5 @@ def lista_produtos(request):
             'produtos': produtos,
             'nome_produto': nome_produto,
             'setor_armazenamento': setor_armazenamento
-            }
-        )
+        }
+    )
