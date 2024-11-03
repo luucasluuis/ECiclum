@@ -1,0 +1,101 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<header>
+    <h1>Sistema de Gerenciamento de Estoque</h1>
+</header>
+<nav>
+    {% comment %} FULL EXEMPLO {% endcomment %}
+    <ul>
+        <li><a href="{% url 'home:index' %}">Entradas</a></li>
+        <li><a href="#saidas">Saídas</a></li>
+        <li><a href="#estoque">Estoque</a></li>
+        <li><a href="#leitura-codigo">Ler Código de Barras</a></li> <!-- Nova opção -->
+    </ul>
+</nav>
+
+<main>
+    <section id="entradas">
+        <h2>Registro de Entradas</h2>
+        <form action="#" method="post">
+            <label for="produto">Produto:</label>
+            <input type="text" id="produto" name="produto" required>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" required>
+
+            <label for="dataEntrada">Data de Entrada:</label>
+            <input type="date" id="dataEntrada" name="dataEntrada" required>
+
+            <button type="submit">Adicionar Entrada</button>
+        </form>
+    </section>
+
+    <section id="saidas">
+        <h2>Registro de Saídas</h2>
+        <form action="#" method="post">
+            <label for="produtoSaida">Produto:</label>
+            <input type="text" id="produtoSaida" name="produtoSaida" required>
+
+            <label for="quantidadeSaida">Quantidade:</label>
+            <input type="number" id="quantidadeSaida" name="quantidadeSaida" required>
+
+            <label for="dataSaida">Data de Saída:</label>
+            <input type="date" id="dataSaida" name="dataSaida" required>
+
+            <button type="submit">Adicionar Saída</button>
+        </form>
+    </section>
+
+    <section id="leitura-codigo">
+        <h2>Ler Código de Barras</h2>
+        <div id="barcode-scanner">
+            <button id="start-scanning">Iniciar Leitura de Código de Barras</button>
+            <input type="text" id="codigo-barra" name="codigo_barra" placeholder="Código de Barras" readonly>
+            <button id="consultar-produto">Consultar Produto</button>
+        </div>
+        <div id="produto-info" style="display: none;">
+            <h3>Detalhes do Produto</h3>
+            <p id="produto-nome"></p>
+            <p id="produto-quantidade"></p>
+            <p id="produto-vencimento"></p>
+            <p id="produto-setor"></p>
+        </div>
+    </section>
+
+    <section id="estoque">
+        <h2>Itens em Estoque</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                    <th>Data da Última Atualização</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Arroz</td>
+                    <td>50</td>
+                    <td>01/11/2024</td>
+                </tr>
+                <tr>
+                    <td>Feijão</td>
+                    <td>30</td>
+                    <td>01/11/2024</td>
+                </tr>
+                <tr>
+                    <td>Açúcar</td>
+                    <td>20</td>
+                    <td>01/11/2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Sistema de Gerenciamento de Estoque</p>
+</footer>
+
+{% endblock %}

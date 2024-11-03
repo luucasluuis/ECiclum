@@ -1,0 +1,59 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<header>
+    <h1>Sistema de Gerenciamento de Estoque</h1>
+</header>
+
+<main>
+    <section id="filtros">
+        <h2>Filtrar Produtos</h2>
+        <form method="POST" action="{% url 'home:lista_produtos' %}">
+            {% csrf_token%}
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome" value="{{ nome_produto }}" placeholder="Digite o nome do produto">
+
+            <label for="setor">Setor de Armazenamento:</label>
+            <input type="text" id="setor" name="setor" value="{{ setor_armazenamento }}" placeholder="Digite o setor">
+
+            <button type="submit">Filtrar</button>
+        </form>
+    </section>
+
+    <section id="estoque">
+        <h2>Itens em Estoque</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Lote</th>
+                    <th>Quantidade</th>
+                    <th>Vencimento</th>
+                    <th>Setor de Armazenamento</th>
+                    <th>Código de Barras</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for produto in produtos %}
+                <tr>
+                    <td>{{ produto.nome }}</td>
+                    <td>{{ produto.lote }}</td>
+                    <td>{{ produto.quantidade }}</td>
+                    <td>{{ produto.vencimento }}</td>
+                    <td>{{ produto.setor_armazenamento }}</td>
+                    <td>{{ produto.codigo_barra }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">Nenhum produto encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Sistema de Gerenciamento de Estoque</p>
+</footer>
+{% endblock %}
