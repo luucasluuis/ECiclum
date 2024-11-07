@@ -1,10 +1,6 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-<header>
-    <h1>Sistema de Gerenciamento de Estoque</h1>
-</header>
-
 <main>
     <section id="filtros">
         <h2>Filtrar Produtos</h2>
@@ -50,10 +46,24 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2024 Sistema de Gerenciamento de Estoque</p>
-</footer>
 {% endblock %}

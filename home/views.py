@@ -1,17 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Produto
+from django.utils import timezone
 
-@login_required
+
+# @login_required
 def index(request):
-
-    context = {
-        'teste': 'testando'
-    }
     return render(
         request,
-        'home/home.html',
-        context)
+        'home/home.html')
 
 def login(request):
     return render(

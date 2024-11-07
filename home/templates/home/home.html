@@ -1,19 +1,6 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-<header>
-    <h1>Sistema de Gerenciamento de Estoque</h1>
-</header>
-<nav>
-    {% comment %} FULL EXEMPLO {% endcomment %}
-    <ul>
-        <li><a href="{% url 'home:index' %}">Entradas</a></li>
-        <li><a href="#saidas">Saídas</a></li>
-        <li><a href="#estoque">Estoque</a></li>
-        <li><a href="#leitura-codigo">Ler Código de Barras</a></li> <!-- Nova opção -->
-    </ul>
-</nav>
-
 <main>
     <section id="entradas">
         <h2>Registro de Entradas</h2>
@@ -63,39 +50,6 @@
         </div>
     </section>
 
-    <section id="estoque">
-        <h2>Itens em Estoque</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Quantidade</th>
-                    <th>Data da Última Atualização</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Arroz</td>
-                    <td>50</td>
-                    <td>01/11/2024</td>
-                </tr>
-                <tr>
-                    <td>Feijão</td>
-                    <td>30</td>
-                    <td>01/11/2024</td>
-                </tr>
-                <tr>
-                    <td>Açúcar</td>
-                    <td>20</td>
-                    <td>01/11/2024</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
 </main>
-
-<footer>
-    <p>&copy; 2024 Sistema de Gerenciamento de Estoque</p>
-</footer>
 
 {% endblock %}
