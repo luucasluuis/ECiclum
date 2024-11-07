@@ -5,51 +5,29 @@
     <section id="entradas">
         <h2>Registro de Entradas</h2>
         <form action="#" method="post">
-            <label for="produto">Produto:</label>
-            <input type="text" id="produto" name="produto" required>
+            <!-- Campo Produto -->
+            <div class="form-group">
+                <label for="produto">Produto:</label>
+                <input type="text" id="produto" name="produto" class="form-control" required>
+            </div>
 
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" name="quantidade" required>
+            <!-- Campo Quantidade -->
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" class="form-control" required>
+            </div>
 
-            <label for="dataEntrada">Data de Entrada:</label>
-            <input type="date" id="dataEntrada" name="dataEntrada" required>
+            <!-- Campo Data de Entrada -->
+            <div class="form-group">
+                <label for="dataEntrada">Data de Entrada:</label>
+                <input type="date" id="dataEntrada" name="dataEntrada" class="form-control" required>
+            </div>
 
-            <button type="submit">Adicionar Entrada</button>
+            <!-- Botão de Envio -->
+            <button type="submit" class="btn btn-primary">Adicionar Entrada</button>
         </form>
     </section>
-
-    <section id="saidas">
-        <h2>Registro de Saídas</h2>
-        <form action="#" method="post">
-            <label for="produtoSaida">Produto:</label>
-            <input type="text" id="produtoSaida" name="produtoSaida" required>
-
-            <label for="quantidadeSaida">Quantidade:</label>
-            <input type="number" id="quantidadeSaida" name="quantidadeSaida" required>
-
-            <label for="dataSaida">Data de Saída:</label>
-            <input type="date" id="dataSaida" name="dataSaida" required>
-
-            <button type="submit">Adicionar Saída</button>
-        </form>
-    </section>
-
-    <section id="leitura-codigo">
-        <h2>Ler Código de Barras</h2>
-        <div id="barcode-scanner">
-            <button id="start-scanning">Iniciar Leitura de Código de Barras</button>
-            <input type="text" id="codigo-barra" name="codigo_barra" placeholder="Código de Barras" readonly>
-            <button id="consultar-produto">Consultar Produto</button>
-        </div>
-        <div id="produto-info" style="display: none;">
-            <h3>Detalhes do Produto</h3>
-            <p id="produto-nome"></p>
-            <p id="produto-quantidade"></p>
-            <p id="produto-vencimento"></p>
-            <p id="produto-setor"></p>
-        </div>
-    </section>
-
 </main>
+
 
 {% endblock %}

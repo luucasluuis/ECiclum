@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Produto
 from django.utils import timezone
+from django.views.generic.list import ListView
+from typing import Any
+from django.core.paginator import Paginator
 
 
 # @login_required
@@ -9,6 +12,16 @@ def index(request):
     return render(
         request,
         'home/home.html')
+
+def saida(request):
+    return render(
+        request,
+        'home/saida.html')
+
+def ler_qrcode(request):
+    return render(
+        request,
+        'home/leitura_qrcode.html')
 
 def login(request):
     return render(
@@ -25,6 +38,12 @@ def custom_404_view(request, exception):
 def lista_produtos(request):
     produtos = Produto.objects
 
+    # ------------ Paginação dos produtos ------------- #
+    paginator = Paginator(produtos.all(), 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    # ------------- Filtragem dos produtos ------------ #
     nome_produto = request.POST.get('nome', '')
     setor_armazenamento = request.POST.get('setor', '')
     if nome_produto:
@@ -41,6 +60,7 @@ def lista_produtos(request):
         {
             'produtos': produtos,
             'nome_produto': nome_produto,
-            'setor_armazenamento': setor_armazenamento
+            'setor_armazenamento': setor_armazenamento,
+            'page_obj': page_obj
         }
     )

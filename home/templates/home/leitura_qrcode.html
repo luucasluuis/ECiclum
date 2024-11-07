@@ -1,0 +1,20 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<section id="leitura-codigo">
+    <h2>Ler Código de Barras</h2>
+    <div id="barcode-scanner">
+        <button id="start-scanning">Iniciar Leitura de Código de Barras</button>
+        <input type="text" id="codigo-barra" name="codigo_barra" placeholder="Código de Barras" readonly>
+        <button id="consultar-produto">Consultar Produto</button>
+    </div>
+    <div id="produto-info" style="display: none;">
+        <h3>Detalhes do Produto</h3>
+        <p id="produto-nome"></p>
+        <p id="produto-quantidade"></p>
+        <p id="produto-vencimento"></p>
+        <p id="produto-setor"></p>
+    </div>
+</section>
+
+{% endblock %}

@@ -12,15 +12,16 @@ header {
     text-align: center;
 }
 
-nav {
+.custom-navbar {
     background-color: #007BFF;
     color: white;
-    margin: 20px 0 50px 0;
-    padding: 1vh;
-    text-align: center;
+    /* text-align: center;
+    display: flex;
+    justify-content: center; */
+    
 }
 
-nav ul {
+/* nav ul {
     list-style-type: none;
     padding: 0;
 }
@@ -38,7 +39,7 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
-}
+} */
 
 main {
     padding: 20px;
