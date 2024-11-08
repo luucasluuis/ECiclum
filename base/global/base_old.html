@@ -1,0 +1,45 @@
+{% extends "global/partials/head.html" %}
+
+{% block header %}
+<header>
+  <h1>Sistema de Gerenciamento de Estoque</h1>
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home:index' %}">Entradas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:saida' %}">Saídas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:lista_produtos' %}#estoque">Estoque</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:qr_code' %}#leitura-codigo">Ler Código de Barras</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'home:qr_code' %}#leitura-codigo">Análise dos dados</a>
+      </li>
+    </ul>
+
+    <form class="d-flex justify-content my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+    </form>
+  </div>  
+</nav>
+
+
+{% endblock %}
+
+{% block content %}
+{% endblock%}
+
+{% block footer%}
+<footer>
+  <p>&copy; {{ year }} Sistema de Gerenciamento de Estoque</p>
+</footer>
+{% endblock %}

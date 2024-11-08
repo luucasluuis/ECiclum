@@ -1,94 +1,105 @@
 {% extends "global/base.html" %}
 
 {% block content %}
-<main>
-    <section id="filtros">
-        <h2>Filtrar Produtos</h2>
-        <form method="POST" action="{% url 'home:lista_produtos' %}">
-            {% csrf_token%}
-            <label for="nome">Nome do Produto:</label>
-            <input type="text" id="nome" name="nome" value="{{ nome_produto }}" placeholder="Digite o nome do produto">
+<main class="container">
+  <div class="bg-body-tertiary p-5 rounded">
+    <h2>Filtrar Produtos</h2>
+    <form class="row gy-2 gx-3 align-items-center" method="POST" action="{% url 'home:lista_produtos' %}">
+      {% csrf_token%}
+      <label class="col-sm-2 col-form-label" for="nome">Nome do Produto:</label>
+      <input class="form-control" type="text" id="nome" name="nome" value="{{ nome_produto }}" placeholder="Digite o nome do produto">
 
-            <label for="setor">Setor de Armazenamento:</label>
-            <input type="text" id="setor" name="setor" value="{{ setor_armazenamento }}" placeholder="Digite o setor">
+      <label class="col-sm-2 col-form-label" for="setor">Setor de Armazenamento:</label>
+      <input class="form-control" type="text" id="setor" name="setor" value="{{ setor_armazenamento }}" placeholder="Digite o setor">
 
-            <button type="submit">Filtrar</button>
-        </form>
-    </section>
+      <button class="btn btn-success" id="filtrar" type="submit">Filtrar</button>
+      <button class="btn btn-warning" onclick="limpar();" type="button">Limpar</button>
+    </form>
+  </div>
 
-    <section id="estoque">
-        <h2>Itens em Estoque</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Produto</th>
-                    <th>Lote</th>
-                    <th>Quantidade</th>
-                    <th>Vencimento</th>
-                    <th>Setor de Armazenamento</th>
-                    <th>Código de Barras</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for produto in page_obj %}
-                <tr>
-                    <td>{{ produto.nome }}</td>
-                    <td>{{ produto.lote }}</td>
-                    <td>{{ produto.quantidade }}</td>
-                    <td>{{ produto.vencimento }}</td>
-                    <td>{{ produto.setor_armazenamento }}</td>
-                    <td>{{ produto.codigo_barra }}</td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="6">Nenhum produto encontrado.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+  <section id="estoque">
+    <h2>Itens em Estoque</h2>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Lote</th>
+          <th>Quantidade</th>
+          <th>Vencimento</th>
+          <th>Setor de Armazenamento</th>
+          <th>Código de Barras</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for produto in page_obj %}
+        <tr>
+          <td>{{ produto.nome }}</td>
+          <td>{{ produto.lote }}</td>
+          <td>{{ produto.quantidade }}</td>
+          <td>{{ produto.vencimento }}</td>
+          <td>{{ produto.setor_armazenamento }}</td>
+          <td>{{ produto.codigo_barra }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="6">Nenhum produto encontrado.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
-    </section>
-    
-    <nav aria-label="paginacao">
-        <ul class="pagination justify-content-center">
-          {% if page_obj.has_previous %}
-            <li class="page-item">
-              <a class="page-link" href="?page=1" aria-label="Primeiro">&laquo; Primeiro</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">Anterior</a>
-            </li>
-          {% else %}
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo; Primeiro</a>
-            </li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-            </li>
-          {% endif %}
-      
-          <li class="page-item disabled">
-            <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
-          </li>
-      
-          {% if page_obj.has_next %}
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Próximo">Próximo</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Último">Último &raquo;</a>
-            </li>
-          {% else %}
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
-            </li>
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Último &raquo;</a>
-            </li>
-          {% endif %}
-        </ul>
-      </nav>      
-      
+  </section>
+
+  <nav aria-label="paginacao">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page=1" aria-label="Primeiro">&laquo; Primeiro</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Anterior">Anterior</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo; Primeiro</a>
+      </li>
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+      </li>
+      {% endif %}
+
+      <li class="page-item disabled">
+        <span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+      </li>
+
+      {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Próximo">Próximo</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Último">Último &raquo;</a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Próximo</a>
+      </li>
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Último &raquo;</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+
+  <script>
+    function limpar() {
+      var nome = document.getElementById("nome");
+      var setor = document.getElementById("setor");
+      nome.value = "";
+      setor.value = "";
+      document.getElementById("filtrar").click();
+    }
+  </script>
 </main>
 
 {% endblock %}
