@@ -1,11 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import Produto
-from django.utils import timezone
-from django.views.generic.list import ListView
-from typing import Any
 from django.core.paginator import Paginator
-
 
 # @login_required
 def index(request):
@@ -23,12 +19,12 @@ def ler_qrcode(request):
         request,
         'home/leitura_qrcode.html')
 
-def login(request):
-    return render(
-        request,
-        'home/login.html')
+# def login(request):
+#     return render(
+#         request,
+#         'home/login.html')
 
-def custom_404_view(request, exception):
+def custom_404_view(request):
     return render(
         request,
         '404.html',
@@ -64,3 +60,6 @@ def lista_produtos(request):
             'page_obj': page_obj
         }
     )
+
+def analise_de_dados(request):
+    pass

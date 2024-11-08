@@ -21,7 +21,12 @@ header {
     
 }
 
-/* nav ul {
+nav{
+    background-color: #007BFF;
+    color: white;
+    padding: 1vh;
+}
+nav ul {
     list-style-type: none;
     padding: 0;
 }
@@ -39,7 +44,7 @@ nav ul li a {
 
 nav ul li a:hover {
     text-decoration: underline;
-} */
+}
 
 main {
     padding: 20px;
