@@ -1,110 +1,97 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <script src="{% static 'global/js/color-modes.js' %}"></script>
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.122.0">
-    <title>Fixed top navbar example · Bootstrap v5.3</title>
+    <meta name="author" content="">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <title>Eciclum BETA</title>
+    <link rel="shortcut icon" href="#eciclum-icon" type="image/x-icon">
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'home/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'global/css/navbar-fixed.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'home/css/style.css' %}"> -->
+    <!-- Custom styles for this template-->
+    <link href="{% static 'home/css/sb-admin-2.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'home/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'home/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'home/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'home/js/sb-admin-2.min.js' %}"></script>
 
-        .b-example-divider {
-            width: 100%;
-            height: 3rem;
-            background-color: rgba(0, 0, 0, .1);
-            border: solid rgba(0, 0, 0, .15);
-            border-width: 1px 0;
-            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
-        }
+    <!-- Page level plugins -->
+    <script src="{% static 'home/vendor/chart.js/Chart.min.js' %}"></script>
 
-        .b-example-vr {
-            flex-shrink: 0;
-            width: 1.5rem;
-            height: 100vh;
-        }
+    <!-- Page level custom scripts -->
+    <script src="{% static 'home/js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'home/js/demo/chart-pie-demo.js' %}"></script>
 
-        .bi {
-            vertical-align: -.125em;
-            fill: currentColor;
-        }
-
-        .nav-scroller {
-            position: relative;
-            z-index: 2;
-            height: 2.75rem;
-            overflow-y: hidden;
-        }
-
-        .nav-scroller .nav {
-            display: flex;
-            flex-wrap: nowrap;
-            padding-bottom: 1rem;
-            margin-top: -1px;
-            overflow-x: auto;
-            text-align: center;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .btn-bd-primary {
-            --bd-violet-bg: #712cf9;
-            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
-            --bs-btn-font-weight: 600;
-            --bs-btn-color: var(--bs-white);
-            --bs-btn-bg: var(--bd-violet-bg);
-            --bs-btn-border-color: var(--bd-violet-bg);
-            --bs-btn-hover-color: var(--bs-white);
-            --bs-btn-hover-bg: #6528e0;
-            --bs-btn-hover-border-color: #6528e0;
-            --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-            --bs-btn-active-color: var(--bs-btn-hover-color);
-            --bs-btn-active-bg: #5a23c8;
-            --bs-btn-active-border-color: #5a23c8;
-        }
-
-        .bd-mode-toggle {
-            z-index: 1500;
-        }
-
-        .bd-mode-toggle .dropdown-menu .active .bi {
-            display: block !important;
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
 </head>
 
-<body>
-    {%block header%}{% endblock %}
-    {% block content %}{% endblock %}
-    {% block footer %}{% endblock %}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+<body id="page-top">
+    <svg style="display: none; width: 500px;" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="eciclum-symbol" viewBox="0 0 595 820">
+            <path
+                d="M420.949 486C396.698 511.788 361.574 528 322.5 528C249.322 528 190 471.14 190 401C190 330.86 249.322 274 322.5 274C370.021 274 408 293.5 427.5 338.5"
+                stroke="#085545" stroke-width="34" />
+            <path d="M445.23 394.177L371 328.392L428.94 337.404L469.474 298L445.23 394.177Z" fill="#085545" />
+            <path d="M242 575L457 537.5" stroke="#085545" stroke-width="15" stroke-linecap="round" />
+            <path d="M212.5 561L114 282" stroke="#085545" stroke-width="15" stroke-linecap="round" />
+            <ellipse cx="219.5" cy="585" rx="33.5" ry="32" fill="#085545" />
+            <path d="M114.5 282.562C109.5 270.062 78.1803 269.794 66 291.562" stroke="#085545" stroke-width="15"
+                stroke-linecap="round" />
+            <path
+                d="M446 445C446.889 453 437 463.5 428 461.5C423.306 461.5 419 453.904 419 447C419 439 440.806 421 445.5 421C445.5 422.5 445 436 446 445Z"
+                fill="#085545" />
+            <path
+                d="M435.5 437.5C433.5 438 431.079 441.981 425.5 461L428 461.5C431.698 446.717 430.608 442.173 435.5 437.5Z"
+                fill="white" stroke="white" />
+        </symbol>
+    </svg>
+    <!-- <svg style="display: none; background-color: transparent;" xmlns="http://www.w3.org/2000/svg"> -->
+    <div id="wrapper">
+        {% block sidebar %} {% endblock %}
+        {% block topbar %} {% endblock %}
+        {% block content %} {% endblock %}
+        {% block footer %} {% endblock %}
+    </div>
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
+
+</html>

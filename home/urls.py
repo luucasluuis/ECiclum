@@ -11,5 +11,8 @@ urlpatterns = [
     path('leitura/', views.ler_qrcode, name='qr_code'),
     # path('login/', auth_views.LoginView.as_view(template_name='home/login.html'), name='login'),
     # path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('produtos/', views.lista_produtos, name='lista_produtos'),
+    path('tables/', views.lista_produtos, name='lista_produtos'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('charts/', views.charts, name='charts'),
+    path('cards/', views.cards, name='cards'),
 ]

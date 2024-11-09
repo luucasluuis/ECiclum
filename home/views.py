@@ -24,29 +24,27 @@ def ler_qrcode(request):
 #         request,
 #         'home/login.html')
 
-def custom_404_view(request):
-    return render(
-        request,
-        '404.html',
-        status=404
-    )
+
+def custom_404(request, exception):
+    return render(request, 'home/dashboard/404.html', status=404)
+
 
 def lista_produtos(request):
-    produtos = Produto.objects
+    produtos = Produto.objects.all()
 
-    # ------------- Filtragem dos produtos ------------ #
-    nome_produto = request.POST.get('nome', '')
-    setor_armazenamento = request.POST.get('setor', '')
-    if nome_produto or setor_armazenamento:
-        if nome_produto:
-            produtos = produtos.filter(nome=nome_produto)
+    # # ------------- Filtragem dos produtos ------------ #
+    # nome_produto = request.POST.get('nome', '')
+    # setor_armazenamento = request.POST.get('setor', '')
+    # if nome_produto or setor_armazenamento:
+    #     if nome_produto:
+    #         produtos = produtos.filter(nome=nome_produto)
         
-        if setor_armazenamento:
-            produtos = produtos.filter(setor_armazenamento=setor_armazenamento)
-    else:
-       produtos = produtos.all()   
+    #     if setor_armazenamento:
+    #         produtos = produtos.filter(setor_armazenamento=setor_armazenamento)
+    # else:
+    #    produtos = produtos.all()   
 
-    produtos = produtos.order_by('vencimento')
+    # produtos = produtos.order_by('vencimento')
 
         # ------------ Paginação dos produtos ------------- #
     paginator = Paginator(produtos, 10)
@@ -55,14 +53,26 @@ def lista_produtos(request):
 
     return render(
         request,
-        'home/lista_produtos.html',
+        'home/dashboard/tables.html',
         {
             'produtos': produtos,
-            'nome_produto': nome_produto,
-            'setor_armazenamento': setor_armazenamento,
-            'page_obj': page_obj
         }
     )
 
-def analise_de_dados(request):
-    pass
+def dashboard(request):
+    return render(
+        request,
+        'home/dashboard/index.html'
+        )
+
+def charts(request):
+    return render(
+        request,
+        'home/dashboard/charts.html'
+        )
+
+def cards(request):
+    return render(
+        request,
+        'home/dashboard/cards.html'
+        )

@@ -1,0 +1,76 @@
+{% extends "global/base.html" %}
+{% load static %}
+<head>
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+</head>
+
+{% block content %}
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Itens em Estoque</h1>
+    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank"
+            href="https://datatables.net">official DataTables documentation</a>.</p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Estoque</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered bg-gradient-dark" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Lote</th>
+                            <th>Quantidade</th>
+                            <th>Vencimento</th>
+                            <th>Setor de Armazenamento</th>
+                            <th>Código de Barras</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Lote</th>
+                            <th>Quantidade</th>
+                            <th>Vencimento</th>
+                            <th>Setor de Armazenamento</th>
+                            <th>Código de Barras</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for produto in produtos %}
+                        <tr>
+                          <td>{{ produto.nome }}</td>
+                          <td>{{ produto.lote }}</td>
+                          <td>{{ produto.quantidade }}</td>
+                          <td>{{ produto.vencimento }}</td>
+                          <td>{{ produto.setor_armazenamento }}</td>
+                          <td>{{ produto.codigo_barra }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                          <td colspan="6">Nenhum produto encontrado.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+
+
+<!-- Page level plugins -->
+<script src="{% static 'home/vendor/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'home/vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{% static 'home/js/demo/datatables-demo.js' %}"></script>
+{% endblock  %}
