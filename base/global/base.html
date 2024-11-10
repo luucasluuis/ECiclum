@@ -25,12 +25,13 @@
             <span>Dashboard</span></a>
     </li>
 
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        Estoque
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -38,13 +39,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
+            <span>Produtos</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="{% url 'home:cards' %}">Cards</a>
+                <a class="collapse-item" href="{% url 'home:produtos_list' %}">Todos os produtos</a>
+                <a class="collapse-item" href="{% url 'home:produto_create' %}">Novo produto</a>
             </div>
         </div>
     </li>
@@ -103,14 +103,6 @@
             <span>Charts</span></a>
     </li>
 
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        
-        <a class="nav-link" href="{% url 'home:lista_produtos' %}">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li>
-
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
@@ -119,13 +111,13 @@
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
 
-    <!-- Sidebar Message -->
+    <!-- Sidebar Message
     <div class="sidebar-card d-none d-lg-flex">
         <img class="sidebar-card-illustration mb-2" src="{% static 'home/img/undraw_rocket.svg'%}" alt="...">
         <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!
         </p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
+    </div> -->
 
 </ul>
 {% endblock %}
@@ -331,10 +323,10 @@
             </ul>
         </nav>
         {% endblock %}
-        {% block content %}{% endblock  %}
-        
+        {% block content %}{% endblock %}
+
         <!-- Footer -->
-        {% block footer%}
+        <!-- {% block footer%}
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -343,5 +335,5 @@
                 </div>
             </footer>
         </div>
-        {% endblock %}
+        {% endblock %} -->
         <!-- End of Footer -->

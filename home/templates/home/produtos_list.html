@@ -1,0 +1,107 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+<h2 class="mb-4">Lista de Produtos</h2>
+
+
+<div class="container-fluid">
+
+    <form method="get" action="." class="form-inline mb-3">
+        <div class="input-group mr-2">
+            <div class="col">
+                <input type="text" name="termo" class="form-control" placeholder="Buscar produtos">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Seletor de Itens por Página -->
+        <div class="form-group">
+            <label for="itens_por_pagina" class="mr-2">Itens por página:</label>
+            <select name="itens_por_pagina" id="itens_por_pagina" class="form-control" onchange="this.form.submit()">
+                <option value="5" {% if itens_por_pagina == 5 %}selected{% endif %}>5</option>
+                <option value="10" {% if itens_por_pagina == 10 %}selected{% endif %}>10</option>
+                <option value="20" {% if itens_por_pagina == 20 %}selected{% endif %}>20</option>
+                <option value="50" {% if itens_por_pagina == 50 %}selected{% endif %}>50</option>
+            </select>
+        </div>        
+    </form>
+
+    <table id="produtoTable" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Código de Barras</th>
+                <th>Categoria</th>
+                <th>Fornecedor</th>
+                <th>Preço de venda</th>
+                <th>Vencimento Mais Próximo</th>
+                <th>Estoque Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produto in page_obj %}
+            <tr>
+                <td>{{ produto.nome }}</td>
+                <td>{{ produto.codigo_barras }}</td>
+                <td>{{ produto.categoria.nome }}</td>
+                <td>{{ produto.fornecedor.nome }}</td>
+                <td>R$ {{ produto.preco_venda }}</td>
+                <td>
+                    {% if produto.validade_mais_proxima %}
+                        {{ produto.validade_mais_proxima }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </td>
+                <td>{{ produto.estoque_set.count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Paginação manual -->
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item">
+                    <a class="page-link"
+                        href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}"
+                        aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                    <a class="page-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a>
+                </li>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                        href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}"
+                        aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- Inicializar DataTables -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#produtoTable').DataTable({
+            "paging": false,  // Desativando paginação do DataTables
+            "searching": false  // Desativando pesquisa padrão para usar nosso formulário
+        });
+    });
+</script>
+{% endblock %}

@@ -1,18 +1,16 @@
+# estoque/urls.py
 from django.urls import path
-from django.contrib.auth import views as auth_views
-from . import views
+from .views import HomeView, SaidaView, LerQRCodeView, DashboardView, ChartsView, CardsView, ProdutoListView, ProdutoCreateView
 
-app_name = 'home'
+app_name = 'home'  # Adicione um app_name para usar como namespace
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('home/', views.index, name='home'),
-    path('saida/', views.saida, name='saida'),
-    path('leitura/', views.ler_qrcode, name='qr_code'),
-    # path('login/', auth_views.LoginView.as_view(template_name='home/login.html'), name='login'),
-    # path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('tables/', views.lista_produtos, name='lista_produtos'),
-    path('dashboard/', views.dashboard, name='dashboard'),
-    path('charts/', views.charts, name='charts'),
-    path('cards/', views.cards, name='cards'),
+    path('', HomeView.as_view(), name='home'),
+    path('saida/', SaidaView.as_view(), name='saida'),
+    path('leitura-qrcode/', LerQRCodeView.as_view(), name='ler_qrcode'),
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('charts/', ChartsView.as_view(), name='charts'),
+    path('cards/', CardsView.as_view(), name='cards'),
+    path('produtos/', ProdutoListView.as_view(), name='produtos_list'),
+    path('produtos/novo/', ProdutoCreateView.as_view(), name='produto_create'),
 ]
