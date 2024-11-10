@@ -7,6 +7,7 @@ from django.db.models import Q
 from django.db.models import Min
 from .forms import ProdutoForm, FornecedorForm, CategoriaForm, LoteForm
 from django.urls import reverse_lazy
+from .service import gerar_insights
 
 # Página inicial com login obrigatório
 #removi a necessidade de login das views:
@@ -77,6 +78,13 @@ class ProdutoListView(ListView):
 class DashboardView(TemplateView):
     template_name = 'home/dashboard/index.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['service'] = gerar_insights()[:200]
+        return context
+
+
 # Gráficos
 class ChartsView(TemplateView):
     template_name = 'home/dashboard/charts.html'
@@ -128,4 +136,9 @@ class ProdutoCreateView(CreateView):
             'fornecedor_form': fornecedor_form,
             'categoria_form': categoria_form,
             'lote_form': lote_form,
+
         })
+# def insight_AI(request):
+#     return render(request, 'home/dashboard/index.html',{
+#         'service': lambda: gerar_insights()
+#     })
