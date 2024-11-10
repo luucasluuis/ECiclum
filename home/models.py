@@ -1,15 +1,15 @@
 from django.db import models
 
 class Categoria(models.Model):
-    nome = models.CharField(max_length=100)
+    nome_categoria = models.CharField(max_length=100)
     descricao = models.TextField(blank=True)
 
     def __str__(self):
-        return self.nome
+        return self.nome_categoria
 
 
 class Fornecedor(models.Model):
-    nome = models.CharField(max_length=100)
+    nome_fornecedor = models.CharField(max_length=100)
     contato = models.CharField(max_length=100, blank=True)
     telefone = models.CharField(max_length=20, blank=True)
     email = models.EmailField(blank=True)
@@ -18,11 +18,11 @@ class Fornecedor(models.Model):
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.nome
+        return self.nome_fornecedor
 
 
 class Produto(models.Model):
-    nome = models.CharField(max_length=100)
+    nome_produto = models.CharField(max_length=100)
     categoria = models.ForeignKey(Categoria, on_delete=models.DO_NOTHING, null=True, blank=True)  # permite null temporariamente
     fornecedor = models.ForeignKey(Fornecedor, on_delete=models.DO_NOTHING)
     codigo_barras = models.CharField(max_length=50, unique=True)
@@ -34,7 +34,7 @@ class Produto(models.Model):
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.nome} - {self.codigo_barras}"
+        return f"{self.nome_produto} - {self.codigo_barras}"
 
 
 class Lote(models.Model):
@@ -53,7 +53,7 @@ class Lote(models.Model):
     )
 
     def __str__(self):
-        return f"Lote de {self.produto.nome} - Vencimento: {self.data_validade}"
+        return f"Lote de {self.produto.nome_produto} - Vencimento: {self.data_validade}"
 
 
 class Estoque(models.Model):
@@ -67,7 +67,7 @@ class Estoque(models.Model):
     data_movimento = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.tipo_movimento} - {self.produto.nome} ({self.quantidade})"
+        return f"{self.tipo_movimento} - {self.produto.nome_produto} ({self.quantidade})"
 
 
 class Promocao(models.Model):
@@ -93,7 +93,7 @@ class PrevisaoDemanda(models.Model):
     data_criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Previsão para {self.produto.nome} - {self.data_previsao}"
+        return f"Previsão para {self.produto.nome_produto} - {self.data_previsao}"
 
 
 class Alerta(models.Model):

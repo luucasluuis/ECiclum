@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView, CreateView
 #from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
@@ -54,7 +54,7 @@ class ProdutoListView(ListView):
         # Aplica o filtro de pesquisa, se houver um termo
         if query:
             produtos = produtos.filter(
-                Q(nome__icontains=query) | Q(codigo_barras__icontains=query)
+                Q(nome_produto__icontains=query) | Q(codigo_barras__icontains=query)
             )
 
         return produtos
@@ -89,7 +89,7 @@ class ProdutoCreateView(CreateView):
     model = Produto
     form_class = ProdutoForm
     template_name = 'home/produto_create.html'
-    success_url = reverse_lazy('estoque:produtos_list')
+    success_url = reverse_lazy('home:produtos_list')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

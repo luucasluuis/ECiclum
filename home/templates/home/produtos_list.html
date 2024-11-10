@@ -43,10 +43,10 @@
         <tbody>
             {% for produto in page_obj %}
             <tr>
-                <td>{{ produto.nome }}</td>
+                <td>{{ produto.nome_produto }}</td>
                 <td>{{ produto.codigo_barras }}</td>
-                <td>{{ produto.categoria.nome }}</td>
-                <td>{{ produto.fornecedor.nome }}</td>
+                <td>{{ produto.categoria.nome_categoria }}</td>
+                <td>{{ produto.fornecedor.nome_fornecedor }}</td>
                 <td>R$ {{ produto.preco_venda }}</td>
                 <td>
                     {% if produto.validade_mais_proxima %}

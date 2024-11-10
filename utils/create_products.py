@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     fake = faker.Faker('pt_BR')
 
-    total_produtos = 1500
+    total_produtos = 500
 
     # Limpa os dados para evitar duplicação
     Produto.objects.all().delete()
@@ -31,13 +31,13 @@ if __name__ == '__main__':
     # Criação de categorias e fornecedores fictícios
     categorias = ["Bebidas", "Laticínios", "Carnes", "Grãos", "Higiene"]
     fornecedores = ["Fornecedor A", "Fornecedor B", "Fornecedor C"]
-    categoria_objs = [Categoria.objects.create(nome=categoria) for categoria in categorias]
-    fornecedor_objs = [Fornecedor.objects.create(nome=fornecedor, contato=fake.name(), telefone=fake.phone_number()[:15], email=fake.email(), endereco=fake.address()) for fornecedor in fornecedores]
+    categoria_objs = [Categoria.objects.create(nome_categoria=categoria) for categoria in categorias]
+    fornecedor_objs = [Fornecedor.objects.create(nome_fornecedor=fornecedor, contato=fake.name(), telefone=fake.phone_number()[:15], email=fake.email(), endereco=fake.address()) for fornecedor in fornecedores]
 
     # Criação de produtos e estoque
     for _ in range(total_produtos):
         produto = Produto.objects.create(
-            nome=fake.word().capitalize(),
+            nome_produto=fake.word().capitalize(),
             categoria=choice(categoria_objs),
             fornecedor=choice(fornecedor_objs),
             codigo_barras=fake.unique.ean13(),
